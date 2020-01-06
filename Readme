@@ -1,0 +1,71 @@
+Importing packages to load data in google colab. And mounting drive by giving it's global path.
+Assigning the dataset path, and also all the 4 categories to an array.
+Importing all required packages.
+
+OS this package is used to access the storage files.
+
+CV2 this package is used for loading Images, resizing etc.,
+
+regularizers In the code I'm using L2 regularizer to get rid off overfitting.
+
+Sequential is used to define a sequential model. we can also able to use Model here in the place of Sequential, but building the model may vary.
+
+We have imported all these layes ( Dense, Conv2D,MaxPooling2D,Dense,Dropout, Flatten,BatchNormalization,Activation ) from Keras.
+
+1) Dense is used for defining fully connected layers,
+2) Conv2D is used for defining convolution layers,
+3) MaxPooling2D is used to define pooling layers here we have used max pooling,
+4) Dropout is used to add dropout, dropout is used to get rid of overfitting,
+5) Flatten is used to flattening the feature maps,
+6) BatchNormalization is used to improve the speed, performance, and stability of the network,
+7) Activation is used to defing activation function.
+
+to_categorical is used to create one-hot encoding to label data.
+
+RMSprop I have used RMS prop as optimizer.
+
+train_test_split is used to total data into portions for training, validation, testing.
+
+LearningRateScheduler, ReduceLROnPlateau, ModelCheckpoint are callbacks used for setting learning rates, reducing learning rate depend on any quantity like accuracy or loss, and also for saving the model if it obey's the condition.
+
+numpy is used for numerical operations.
+
+matplotlib for ploting images and grapths etc..,
+
+Scheduling the learning rate upto 50 epochs 0.001, after that upto 75 epochs 0.0005, after 75 0.0003. This learning rates I'm using because while traing I have used different learning rates but these are giving good results. This function we call in **LearningRateScheduler** in this call back.
+Loading the data from traing images, all the Images into one array, corresponding labels into another array. I'm resizing 800x800 image into 512x512. and printing the total size of dataset.
+Converting the data into numpy arrays for convenient use.
+Splitting the dataset into two parts. One part is for training and anothe part is for validation.
+
+90% for training that is 396 images, and 10% for validation 44 images.
+Ploting the traing data histogram using matplotlib to visualize the traing data distribution.
+Ploting the validation data histogram using matplotlib to visualize the validation data distribution.
+Normalizing the dataset, because neural network can easily able to predict values between 0,1. And the same time creating one hot encoding for traning and validation labels.
+Confirming for the corresponding image we are getting correct label or not.
+Building the model starts here.
+
+Our model has 8 convolution layers, and 5 fully connected layers including output layer. I'm using max pooling in my model, and activation as relu, throughout the model i have used 3x3 kernal. I have used varying dropout. And visualizing the summary.
+
+Smaller networks are giving good traing and validation accuracy,  but they are not giving good testing accuracy.
+IIn the first step I'm compiling the model, as I said earlier I'm using RMSprop as optimizer with, and loss function as categorical_crossentroply.
+
+And Whenever the validation loss stops decreasing the learning rate decreses.
+
+created check points.
+
+I'm using batch_size 32. triang for 100 epochs.
+
+using model.fit I'm fitting the model for our dataset.
+Defining the path and saving the weights
+Model training has completed. Now I have strated testing our model.
+
+Defining the path of test images.
+Loading the test images into an array.
+Creating numpy array
+While traing we have normalized the data, so in the testing phase also we have to normalize the data.
+Predicting the labels and storing them into y_pred
+Converting the one hot encoded output to numericals.Ploting the images and corresponding predicted labels.
+
+I'm printing predicted lable +1, because classes are from 0 to 3. In the original data they are from category 1 to 4.
+
+Prediclted category is printing on the top of image.
